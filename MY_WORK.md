@@ -32,17 +32,17 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | [naif mousa almousa] |
+| **Student ID** | [444052197] |
+| **University Email** | [444052197@std.psau.edu.sa |
+| **GitHub Username** | [Naifalmousaa] |
+| **Repository Link** | [https://github.com/Naifalmousaa/OS-Assignment3-naif-almousa] |
  
 ---
 
 ## 🎥 Video Link
 
-**Video Link**: [Paste your video link here]
+**Video Link**: [(https://youtu.be/Dkl7A0bnzt4)]
 
 > ⚠️ **WARNING:** The video must be **publicly accessible** ("Anyone with the link can view") on **Google Drive**, **YouTube (Unlisted or Public)** or any other cloud file-sharing system. A private, restricted or broken link counts as a **missing video (-1 mark)**.
 >
@@ -132,69 +132,93 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
+### Entry 1 - [14 nov]
 **What I did**:
-
+Ran the original scheduler program.
 **Details**:
-
+Opened SchedulerSimulationSync.java in VS Code
 **Challenges**:
-
+I did not understand why multiple CPUs could select the same process.
 **Solution**:
-
+ I checked ReadyQueue.poll() and found that the queue operations were not protected by a lock.
 **Time spent**:
-
+20min
 ---
 
-### Entry 2 - [Date and Time]
-**What I did**:
+### Entry 2 - [14 nov]
+**What I did**:Worked on Feature 1 using ReentrantLock
 
 **Details**:
+Worked on Feature 1 using ReentrantLock.
 
+Details:
+
+Imported ReentrantLock.
+
+Added a lock inside ReadyQueue.
 **Challenges**:
-
+ I needed to understand which queue operations shared data between CPU
 **Solution**:
-
+I protected accesses to the queue's list and map with the same lock.
 **Time spent**:
-
+30 min
 ---
 
-### Entry 3 - [Date and Time]
+### Entry 3 - [14 nov]
 **What I did**:
-
+Worked on Feature 2 to protect shared statistics.
 **Details**:
+Worked on Feature 2 to protect shared statistics.
 
+Details:
+
+Added statsLock inside SharedStats.
+
+Protected the three counter-update methods.
+
+Protected the three getter methods.
 **Challenges**:
-
+I had to choose whether to use one lock or separate locks for the counters.
 **Solution**:
-
+I used one lock because it was easier to manage and protected all three statistics consistently
 **Time spent**:
-
+40 min
 ---
 
-### Entry 4 - [Date and Time]
+### Entry 4 - [14 nov]
 **What I did**:
-
+Fixed Java compilation errors
 **Details**:
+Received a reached end of file while parsing error.
 
+Checked the braces in SharedStats and ReadyQueue
 **Challenges**:
-
+One wrong brace caused errors in another part of the program.
 **Solution**:
-
+I reviewed the class and method boundaries carefully and used javac to check the code
 **Time spent**:
-
+25 min
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - [14 nov]
 **What I did**:
-
+Implemented Feature 3 using a counting semaphore.
 **Details**:
+Implemented Feature 3 using a counting semaphore.
 
+Details:
+
+Imported Semaphore.
+
+Created availableProcesses with an initial value of zero.
+
+Added release() when a process enters the ready queue.
 **Challenges**:
-
+I initially left some of the old busy-waiting code in CpuWorker.run()
 **Solution**:
-
+I reviewed the method and removed the old polling statements so the CPU could wait using the semaphore
 **Time spent**:
-
+50 min
 ---
 
 ### Entry 6 - [Optional - Date and Time]
@@ -214,7 +238,7 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [7 hours]
 
 **Most challenging part**:
 
@@ -240,7 +264,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I learned that synchronization is important when multiple threads use the same data. Without synchronization, two CPUs can access or update a shared value at the same time and produce incorrect results. In this assignment, I used ReentrantLock to protect the ready queue and shared statistics. I also learned that try/finally helps make sure a lock is released after a critical section]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -248,7 +272,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[he most challenging part was fixing the code while working on synchronization. I made some mistakes with the braces when replacing Java methods. These mistakes caused compilation errors, including reached end of file while parsing. I also had trouble removing the old busy-waiting code from CpuWorker.run().]
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -256,7 +280,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I worked on the problems one step at a time. First, I read the error messages from the Java compiler. Then I checked the methods and braces near the reported lines. I compared my code with the original starter to avoid changing unrelated parts. I also used the terminal to compile the program and check the output. After each correction, I tested the code again to see whether the error was fixed]
 
 ## Question 4: Where can synchronization concepts be applied in real-world applications?
 
@@ -264,7 +288,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[Synchronization is useful in many real-world systems. For example, banking applications need synchronization when different transactions update the same account balance. Without proper protection, one transaction could overwrite another transaction's changes. Ticket booking systems also need synchronization so two users cannot reserve the same seat at the same time. A lock can protect shared information while it is being updated]
 
 ### Optional: What would you like to learn more about?
 
@@ -298,7 +322,7 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[The original scheduler had race conditions because shared data was accessed without proper synchronization. In my original run, the expected number of completed processes was 17, but the observed number was 16. The expected context-switch count was 38]
 
 Verification block of the **original starter**:
 ```
@@ -321,7 +345,7 @@ Verification block of **my final version**:
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[I protected ReadyQueue.add(), poll(), processOf(), and snapshot() with the queue lock because they access the shared list and map. I used one statsLock for the three shared statistics and their getter methods because it is simple and reduces the chance of synchronization mistakes. The disadvantage is that unrelated statistic updates must wait for the same lock, while separate locks could allow more concurrency]
 
 | Critical section (variable / method) | Lock used | Why it needs protection |
 |---|---|---|
@@ -336,7 +360,7 @@ Verification block of **my final version**:
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[The original scheduler used busy waiting by repeatedly checking the ready queue and sleeping for 20 milliseconds when it was empty. In my starter output, the Busy-waiting polls value was 738, showing that the CPUs checked the empty queue many times]
 
 ## Question 4: Classical Problems and Deadlock
 
